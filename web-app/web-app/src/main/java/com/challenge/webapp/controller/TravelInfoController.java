@@ -138,7 +138,7 @@ public class TravelInfoController {
 
 	
 	
-	//2.
+	//2.		
 	
 	public  Exchange getExchange(String coin) {
 		Exchange exchange = new Exchange();	
