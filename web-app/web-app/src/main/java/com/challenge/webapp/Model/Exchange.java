@@ -5,9 +5,19 @@ import java.math.BigDecimal;
 public class Exchange {
 	
 	public String result;
+	public String base_code;
 	public String documentation;
 	public String terms_of_use;
 	public BigDecimal conversion_rate;
+	
+	
+	
+	public String getBase_code() {
+		return base_code;
+	}
+	public void setBase_code(String base_code) {
+		this.base_code = base_code;
+	}
 	public String getResult() {
 		return result;
 	}

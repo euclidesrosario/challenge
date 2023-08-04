@@ -1,5 +1,6 @@
 package com.challenge.webapp.Model;
 
+import java.math.BigDecimal;
 
 public class Weather {
 
@@ -11,9 +12,37 @@ public class Weather {
 	private	double temperature;
 	private int humidity ;
 	private String country;
+	private BigDecimal temp_min;
+	private BigDecimal temp_max;
 	
 	
 	
+	
+	
+
+	public BigDecimal getTemp_min() {
+		return temp_min;
+	}
+
+
+
+	public void setTemp_min(BigDecimal temp_min) {
+		this.temp_min = temp_min;
+	}
+
+
+
+	public BigDecimal getTemp_max() {
+		return temp_max;
+	}
+
+
+
+	public void setTemp_max(BigDecimal temp_max) {
+		this.temp_max = temp_max;
+	}
+
+
 
 	public double getTemperature() {
 		return temperature;

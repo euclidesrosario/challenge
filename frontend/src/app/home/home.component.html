@@ -1,0 +1,101 @@
+<div class="bg-info">
+  <nav class="navbar navbar-expand-lg bg-primary ">
+    <a class="navbar-brand text-white" href="#">Challenge</a>
+  </nav>
+</div>
+
+<div class="conteiner-fluid">
+
+
+<br>
+  <table class="col-md-12 text-center" >
+    <thead>
+        <tr>
+            <th class="border px-4 py-2 items-left">
+              <h3>Pesquise a cidade e veja o clima e outros dados:</h3>
+            </th>
+        </tr>
+        <tr>
+          <th class="border px-4 py-2">
+             <form (submit)="onSubmit()">
+              <input  type="search" [(ngModel)]="value" name="value"
+              class="shadow appearance-none col-md-8 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               placeholder="Pesquise a cidade.." >
+             </form>
+          </th>
+      </tr>
+    </thead>
+    <tbody class="countries-tb overflow-y-scroll">
+    </tbody>
+</table>
+<table class="col-md-12 text-center" *ngIf="response">
+  <thead>
+      <tr>
+
+      </tr>
+
+    <tr>
+      <th class="border px-4 py-2">
+        <p>População: {{response.countryData.population}}</p>
+    </th>
+
+    <th class="border px-4 py-2">
+      <p>Pib: {{response.countryData.gdp}}</p>
+  </th>
+  <th class="border px-4 py-2">
+    <p>Pais: {{response.countryData.country}}</p>
+</th>
+<th class="border px-4 py-2">
+  <p>Cambio 1 {{response.exchange.base_code}} -> {{response.exchange.conversion_rate}} MZN </p>
+</th>
+  </tr>
+<tr>
+
+</tr>
+  </thead>
+  <tbody class="countries-tb overflow-y-scroll">
+  </tbody>
+</table>
+
+
+<div class="container text-center" *ngIf="response">
+  <br><br>
+  <div  class="">
+    <h2>      <img id="weather-icon" src="/assets/img/location-position.svg" width="50px" alt="">
+      <span id="city">{{response.weather.city}}</span> </h2>
+
+    <div id="description-container row">
+      <p id="description"></p>
+      <img id="weather-icon" src="/assets/img/cloudy.png" width="110px" alt="Condições atuais">
+
+      <h1>{{response.weather.temp_max}} &deg;C</h1>
+      <h4>{{response.weather.temp_min}} &deg;C</h4>
+    </div>
+    <div id="details-container">
+      <p id="umidity">
+        <i class="fa-solid fa-droplet"></i>
+        <span></span>
+      </p>
+      <p id="wind">
+        <i class="fa-solid fa-wind"></i>
+        <span></span>
+      </p>
+    </div>
+  </div>
+  <div id="error-message" >
+
+    <br>
+  </div>
+
+
+
+</div>
+
+<h4 class="text-center" *ngIf="error">Não foi possível encontrar o tempo de uma cidade com este nome.</h4>
+<br><br>
+<div class="conteiner text-center" *ngIf="load">
+  <img class="text-center" src="/assets/img/Spinner-1s-200px.svg" width="50px" alt="Condições atuais">
+      <span id="city">aguarde...</span>
+</div>
+
+

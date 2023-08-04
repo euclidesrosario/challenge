@@ -35,9 +35,9 @@ public class TravelInfoController {
 	
 	@GetMapping
 	@Async
-	public Response responseRequest() {
+	public Response responseRequest(String value) {
 		
-		String value="za";
+//		String value="zimbabwe";
 		Response response= new Response();
 
 		Weather weather = getWeather(value);
@@ -55,11 +55,8 @@ public class TravelInfoController {
 			return response;
 		} else
 		{
-			System.out.println(" e null");
-
 			CountryData CountryData = getCountryData(value);
 			response.setCountryData(CountryData);
-			
 			response.setExchange(getExchange(getCountryCurrency(value)));
 
 
@@ -72,16 +69,7 @@ public class TravelInfoController {
 
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	// 1. 
 	public  Weather getWeather(String city) {
@@ -133,6 +121,8 @@ public class TravelInfoController {
 			weather.setCity(jsonObject.getString("name"));
 			weather.setHumidity(main.getInt("humidity"));
 			weather.setTemperature(main.getDouble("temp"));
+			weather.setTemp_max(main.getBigDecimal("temp_max"));
+			weather.setTemp_min(main.getBigDecimal("temp_min"));
 			weather.setMain(sys.getString("country"));
 	        System.out.println( weather.toString());
 	        
@@ -161,6 +151,8 @@ public class TravelInfoController {
 			String responseBody = EntityUtils.toString(entity);
 			JSONObject jsonObject = new JSONObject(responseBody);
 			exchange.setConversion_rate(jsonObject.getBigDecimal("conversion_rate"));
+			exchange.setBase_code(jsonObject.getString("base_code")); ;
+			
 	        System.out.println( exchange.toString());
 	        
 	        
